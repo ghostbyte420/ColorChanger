@@ -15,7 +15,6 @@ namespace ColorChanger.Extensions
             byte[] resultBuffer = new byte[resultData.Stride * resultData.Height];
             Marshal.Copy(sourceData.Scan0, resultBuffer, 0, resultBuffer.Length);
             sourceBitmap.UnlockBits(sourceData);
-
             byte sourceRed, sourceGreen, sourceBlue, sourceAlpha;
             int resultRed, resultGreen, resultBlue;
             byte newRedValue = filterData.NewColor.R;
@@ -26,7 +25,6 @@ namespace ColorChanger.Extensions
             byte blueFilter = filterData.SourceColor.B;
             byte minValue = 0;
             byte maxValue = 255;
-
             for (int k = 0; k < resultBuffer.Length; k += 4)
             {
                 sourceAlpha = resultBuffer[k + 3];
@@ -42,15 +40,12 @@ namespace ColorChanger.Extensions
                         resultBlue = blueFilter - sourceBlue + newBlueValue;
                         if (resultBlue > maxValue) resultBlue = maxValue;
                         else if (resultBlue < minValue) resultBlue = minValue;
-
                         resultGreen = greenFilter - sourceGreen + newGreenValue;
                         if (resultGreen > maxValue) resultGreen = maxValue;
                         else if (resultGreen < minValue) resultGreen = minValue;
-
                         resultRed = redFilter - sourceRed + newRedValue;
                         if (resultRed > maxValue) resultRed = maxValue;
                         else if (resultRed < minValue) resultRed = minValue;
-
                         resultBuffer[k] = (byte)resultBlue;
                         resultBuffer[k + 1] = (byte)resultGreen;
                         resultBuffer[k + 2] = (byte)resultRed;
@@ -58,7 +53,6 @@ namespace ColorChanger.Extensions
                     }
                 }
             }
-
             Marshal.Copy(resultBuffer, 0, resultData.Scan0, resultBuffer.Length);
             resultBitmap.UnlockBits(resultData);
             return resultBitmap;
@@ -84,10 +78,8 @@ namespace ColorChanger.Extensions
     {
         private int thresholdValue = 10;
         public int ThresholdValue { get => thresholdValue; set => thresholdValue = value; }
-
         private Color sourceColor = Color.White;
         public Color SourceColor { get => sourceColor; set => sourceColor = value; }
-
         private Color newColor = Color.White;
         public Color NewColor { get => newColor; set => newColor = value; }
     }
@@ -115,7 +107,6 @@ namespace ColorChanger.Extensions
                     m = new Matrix(-1, 0, 0, 1, 0, 0);
                     m.Translate(flippedImage.Width, 0, MatrixOrder.Append);
                 }
-
                 g.Transform = m;
                 g.DrawImage(image, 0, 0);
                 m.Dispose();

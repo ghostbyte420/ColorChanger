@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(colorChangerMain));
             colorChangerMain_groupBox_original_panel_canvas = new Panel();
             colorChangerMain_groupBox_original_panel_canvas_pixelBox_display = new ColorChanger.Controls.PixelBox();
             colorChangerMain_groupBox_original = new GroupBox();
             colorChangerMain_panel_imageControl = new Panel();
-            colorChangerMain_panel_imageControl_label_threshold = new Label();
             colorChangerMain_panel_imageControl_trackBar_threshold = new TrackBar();
             colorChangerMain_panel_imageControl_button_mirrorCustomImage = new Button();
             colorChangerMain_panel_imageControl_button_selectReplacementColor = new Button();
@@ -46,7 +46,7 @@
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display = new ColorChanger.Controls.PixelBox();
             colorChangerMain_statusStrip = new StatusStrip();
             colorChangerMain_statusStrip_label_version = new ToolStripStatusLabel();
-            colorChangerMain_statusStrip_label_lastUpdated = new ToolStripStatusLabel();
+            colorChangerMain_statusStrip_label_imageThreshold = new ToolStripStatusLabel();
             colorChangerMain_button_loadOriginalImage = new Button();
             colorChangerMain_button_saveCustomImage = new Button();
             colorChangerMain_button_replaceOriginalwithCustom = new Button();
@@ -75,6 +75,7 @@
             colorChangerMain_groupBox_original_panel_canvas_pixelBox_display.Location = new Point(0, 0);
             colorChangerMain_groupBox_original_panel_canvas_pixelBox_display.Name = "colorChangerMain_groupBox_original_panel_canvas_pixelBox_display";
             colorChangerMain_groupBox_original_panel_canvas_pixelBox_display.Size = new Size(233, 220);
+            colorChangerMain_groupBox_original_panel_canvas_pixelBox_display.SizeMode = PictureBoxSizeMode.Zoom;
             colorChangerMain_groupBox_original_panel_canvas_pixelBox_display.TabIndex = 0;
             colorChangerMain_groupBox_original_panel_canvas_pixelBox_display.TabStop = false;
             // 
@@ -91,7 +92,6 @@
             // 
             // colorChangerMain_panel_imageControl
             // 
-            colorChangerMain_panel_imageControl.Controls.Add(colorChangerMain_panel_imageControl_label_threshold);
             colorChangerMain_panel_imageControl.Controls.Add(colorChangerMain_panel_imageControl_trackBar_threshold);
             colorChangerMain_panel_imageControl.Controls.Add(colorChangerMain_panel_imageControl_button_mirrorCustomImage);
             colorChangerMain_panel_imageControl.Controls.Add(colorChangerMain_panel_imageControl_button_selectReplacementColor);
@@ -105,19 +105,9 @@
             colorChangerMain_panel_imageControl.Size = new Size(225, 240);
             colorChangerMain_panel_imageControl.TabIndex = 2;
             // 
-            // colorChangerMain_panel_imageControl_label_threshold
-            // 
-            colorChangerMain_panel_imageControl_label_threshold.AutoSize = true;
-            colorChangerMain_panel_imageControl_label_threshold.Font = new Font("Comic Sans MS", 9.5F);
-            colorChangerMain_panel_imageControl_label_threshold.Location = new Point(56, 218);
-            colorChangerMain_panel_imageControl_label_threshold.Name = "colorChangerMain_panel_imageControl_label_threshold";
-            colorChangerMain_panel_imageControl_label_threshold.Size = new Size(73, 18);
-            colorChangerMain_panel_imageControl_label_threshold.TabIndex = 8;
-            colorChangerMain_panel_imageControl_label_threshold.Text = "Threshold:";
-            // 
             // colorChangerMain_panel_imageControl_trackBar_threshold
             // 
-            colorChangerMain_panel_imageControl_trackBar_threshold.Location = new Point(5, 186);
+            colorChangerMain_panel_imageControl_trackBar_threshold.Location = new Point(5, 189);
             colorChangerMain_panel_imageControl_trackBar_threshold.Maximum = 100;
             colorChangerMain_panel_imageControl_trackBar_threshold.Minimum = 1;
             colorChangerMain_panel_imageControl_trackBar_threshold.Name = "colorChangerMain_panel_imageControl_trackBar_threshold";
@@ -161,6 +151,7 @@
             // 
             // colorChangerMain_panel_imageControl_panel_replacementColorPreview
             // 
+            colorChangerMain_panel_imageControl_panel_replacementColorPreview.BackColor = SystemColors.ActiveCaptionText;
             colorChangerMain_panel_imageControl_panel_replacementColorPreview.Location = new Point(5, 111);
             colorChangerMain_panel_imageControl_panel_replacementColorPreview.Name = "colorChangerMain_panel_imageControl_panel_replacementColorPreview";
             colorChangerMain_panel_imageControl_panel_replacementColorPreview.Size = new Size(53, 27);
@@ -168,7 +159,8 @@
             // 
             // colorChangerMain_panel_imageControl_panel_originalColorPreview
             // 
-            colorChangerMain_panel_imageControl_panel_originalColorPreview.Location = new Point(5, 69);
+            colorChangerMain_panel_imageControl_panel_originalColorPreview.BackColor = Color.Black;
+            colorChangerMain_panel_imageControl_panel_originalColorPreview.Location = new Point(5, 70);
             colorChangerMain_panel_imageControl_panel_originalColorPreview.Name = "colorChangerMain_panel_imageControl_panel_originalColorPreview";
             colorChangerMain_panel_imageControl_panel_originalColorPreview.Size = new Size(53, 27);
             colorChangerMain_panel_imageControl_panel_originalColorPreview.TabIndex = 2;
@@ -178,7 +170,7 @@
             colorChangerMain_panel_imageControl_label_interpolationMode.AutoSize = true;
             colorChangerMain_panel_imageControl_label_interpolationMode.BackColor = Color.Transparent;
             colorChangerMain_panel_imageControl_label_interpolationMode.Font = new Font("Comic Sans MS", 9.5F);
-            colorChangerMain_panel_imageControl_label_interpolationMode.Location = new Point(49, 14);
+            colorChangerMain_panel_imageControl_label_interpolationMode.Location = new Point(80, 14);
             colorChangerMain_panel_imageControl_label_interpolationMode.Name = "colorChangerMain_panel_imageControl_label_interpolationMode";
             colorChangerMain_panel_imageControl_label_interpolationMode.Size = new Size(125, 18);
             colorChangerMain_panel_imageControl_label_interpolationMode.TabIndex = 1;
@@ -187,9 +179,9 @@
             // colorChangerMain_panel_imageControl_comboBox_interpolationMode
             // 
             colorChangerMain_panel_imageControl_comboBox_interpolationMode.FormattingEnabled = true;
-            colorChangerMain_panel_imageControl_comboBox_interpolationMode.Location = new Point(4, 34);
+            colorChangerMain_panel_imageControl_comboBox_interpolationMode.Location = new Point(5, 34);
             colorChangerMain_panel_imageControl_comboBox_interpolationMode.Name = "colorChangerMain_panel_imageControl_comboBox_interpolationMode";
-            colorChangerMain_panel_imageControl_comboBox_interpolationMode.Size = new Size(217, 23);
+            colorChangerMain_panel_imageControl_comboBox_interpolationMode.Size = new Size(216, 23);
             colorChangerMain_panel_imageControl_comboBox_interpolationMode.TabIndex = 0;
             colorChangerMain_panel_imageControl_comboBox_interpolationMode.SelectionChangeCommitted += colorChangerMain_panel_imageControl_comboBox_interpolationMode_SelectionChangeCommitted;
             // 
@@ -218,6 +210,7 @@
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.Location = new Point(0, 0);
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.Name = "colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display";
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.Size = new Size(233, 220);
+            colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.SizeMode = PictureBoxSizeMode.Zoom;
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.TabIndex = 0;
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.TabStop = false;
             colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display.MouseDown += colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display_MouseDown;
@@ -226,8 +219,9 @@
             // 
             // colorChangerMain_statusStrip
             // 
+            colorChangerMain_statusStrip.BackgroundImage = Properties.Resources.bkd_002;
             colorChangerMain_statusStrip.Font = new Font("Segoe UI", 11F);
-            colorChangerMain_statusStrip.Items.AddRange(new ToolStripItem[] { colorChangerMain_statusStrip_label_version, colorChangerMain_statusStrip_label_lastUpdated });
+            colorChangerMain_statusStrip.Items.AddRange(new ToolStripItem[] { colorChangerMain_statusStrip_label_version, colorChangerMain_statusStrip_label_imageThreshold });
             colorChangerMain_statusStrip.Location = new Point(0, 304);
             colorChangerMain_statusStrip.Name = "colorChangerMain_statusStrip";
             colorChangerMain_statusStrip.Size = new Size(745, 24);
@@ -238,17 +232,17 @@
             // colorChangerMain_statusStrip_label_version
             // 
             colorChangerMain_statusStrip_label_version.Font = new Font("Segoe UI", 10F);
-            colorChangerMain_statusStrip_label_version.Margin = new Padding(15, 3, 360, 2);
+            colorChangerMain_statusStrip_label_version.Margin = new Padding(15, 3, 383, 2);
             colorChangerMain_statusStrip_label_version.Name = "colorChangerMain_statusStrip_label_version";
             colorChangerMain_statusStrip_label_version.Size = new Size(184, 19);
             colorChangerMain_statusStrip_label_version.Text = "version 5.0  |  Build 112225a";
             // 
-            // colorChangerMain_statusStrip_label_lastUpdated
+            // colorChangerMain_statusStrip_label_imageThreshold
             // 
-            colorChangerMain_statusStrip_label_lastUpdated.Font = new Font("Segoe UI", 10F);
-            colorChangerMain_statusStrip_label_lastUpdated.Name = "colorChangerMain_statusStrip_label_lastUpdated";
-            colorChangerMain_statusStrip_label_lastUpdated.Size = new Size(172, 19);
-            colorChangerMain_statusStrip_label_lastUpdated.Text = "Last Updated: 11/22/2025";
+            colorChangerMain_statusStrip_label_imageThreshold.Font = new Font("Segoe UI", 10F);
+            colorChangerMain_statusStrip_label_imageThreshold.Name = "colorChangerMain_statusStrip_label_imageThreshold";
+            colorChangerMain_statusStrip_label_imageThreshold.Size = new Size(114, 19);
+            colorChangerMain_statusStrip_label_imageThreshold.Text = "Image Threshold:";
             // 
             // colorChangerMain_button_loadOriginalImage
             // 
@@ -291,13 +285,15 @@
             Controls.Add(colorChangerMain_button_replaceOriginalwithCustom);
             Controls.Add(colorChangerMain_button_saveCustomImage);
             Controls.Add(colorChangerMain_button_loadOriginalImage);
-            Controls.Add(colorChangerMain_statusStrip);
             Controls.Add(colorChangerMain_groupBox_custom);
             Controls.Add(colorChangerMain_panel_imageControl);
             Controls.Add(colorChangerMain_groupBox_original);
+            Controls.Add(colorChangerMain_statusStrip);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "colorChangerMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Color Changer";
             colorChangerMain_groupBox_original_panel_canvas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)colorChangerMain_groupBox_original_panel_canvas_pixelBox_display).EndInit();
@@ -327,14 +323,13 @@
         private Button colorChangerMain_panel_imageControl_button_selectReplacementColor;
         private Button colorChangerMain_panel_imageControl_button_selectOriginalColor;
         private Button colorChangerMain_panel_imageControl_button_mirrorCustomImage;
-        private Label colorChangerMain_panel_imageControl_label_threshold;
         private TrackBar colorChangerMain_panel_imageControl_trackBar_threshold;
         private GroupBox colorChangerMain_groupBox_custom;
         private Panel colorChangerMain_groupBox_custom_panel_canvas;
         private Controls.PixelBox colorChangerMain_groupBox_custom_panel_canvas_pixelBox_display;
         private StatusStrip colorChangerMain_statusStrip;
         private ToolStripStatusLabel colorChangerMain_statusStrip_label_version;
-        private ToolStripStatusLabel colorChangerMain_statusStrip_label_lastUpdated;
+        private ToolStripStatusLabel colorChangerMain_statusStrip_label_imageThreshold;
         private Button colorChangerMain_button_loadOriginalImage;
         private Button colorChangerMain_button_saveCustomImage;
         private Button colorChangerMain_button_replaceOriginalwithCustom;

@@ -8,6 +8,9 @@ namespace ColorChanger.Controls
     public class PixelBox : PictureBox
     {
         private float _zoom = 1.0f;
+        private int _offsetX = 0;
+        private int _offsetY = 0;
+
         [Category("Behavior")]
         [DefaultValue(1.0f)]
         public float Zoom
@@ -15,10 +18,18 @@ namespace ColorChanger.Controls
             get => _zoom;
             set
             {
-                _zoom = Math.Max(0.1f, value); // Prevent zooming out too much
+                _zoom = Math.Max(0.1f, value);
                 Invalidate();
             }
         }
+
+        [Category("Behavior")]
+        [DefaultValue(0)]
+        public int OffsetX { get => _offsetX; set { _offsetX = value; Invalidate(); } }
+
+        [Category("Behavior")]
+        [DefaultValue(0)]
+        public int OffsetY { get => _offsetY; set { _offsetY = value; Invalidate(); } }
 
         public PixelBox()
         {
@@ -34,6 +45,7 @@ namespace ColorChanger.Controls
         {
             pe.Graphics.InterpolationMode = InterpolationMode;
             pe.Graphics.ScaleTransform(_zoom, _zoom);
+            pe.Graphics.TranslateTransform(_offsetX, _offsetY);
             base.OnPaint(pe);
         }
     }
